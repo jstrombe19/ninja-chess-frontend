@@ -1,0 +1,87 @@
+
+.App {
+  color: white;
+}
+
+.App-header {
+  min-height: 150px;
+  max-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(40px + 2vmin);
+}
+
+.body {
+  display: flex;
+  flex-direction: row;
+  height: 1000px;
+  background-image: url(https://sitejerk.com/images/chess-piece-transparent-13.png);
+}
+
+.column-1 {
+  width: 150px;
+  margin-right: auto;
+  margin-left: 20px;
+}
+
+.column-2 {
+  width: auto;
+}
+
+.column-3 {
+  width: 150px;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+
+body {
+  font: 16px "Century Gothic", Futura, sans-serif;
+  margin: 0px;
+  background: linear-gradient(#282c34, #ddd);
+
+}
+
+ol, ul {
+  padding-left: 30px;
+}
+
+#player-turn-box {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #000;
+  margin-bottom: 10px;
+}
+
+.game {
+  display: flex;
+  align-content: flex-start;
+}
+
+.captured-pieces-block {
+  width: 100px;
+  height:auto;
+}
+
+.game-board {
+  width: 380px;
+}
+
+.kdb-navigation .square:focus {
+  background: #ddd;
+}
+
+.square:focus {
+  outline:none;
+}
+
+.game-info {
+  width: 265px;
+  margin-left: 20px;
+}
+
+.game-status {
+  height: 76px;
+}

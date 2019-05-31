@@ -1,0 +1,26 @@
+.square {
+  background: transparent;
+  border: 1px solid transparent;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 48px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 48px;
+}
+
+.dark-square {
+  background-color: rgb(0, 153, 153);
+}
+
+.light-square {
+  background-color: rgb(102, 255, 255);
+}
+
+.selected-square {
+  background-color: rgb(0, 0, 255);
+}

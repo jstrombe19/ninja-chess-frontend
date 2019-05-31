@@ -18,6 +18,14 @@ class App extends React.Component {
     }
   }
 
+  sendStats = (stats) => {
+    console.log('stats were sent!');
+  }
+
+  handleBetaClick() {
+    console.log('BUTTON WAS CLICKED!');
+  }
+
   handleLoginClick() {
     this.setState({isLoggedIn: true})
   }
@@ -99,6 +107,12 @@ class App extends React.Component {
                 renderUser={this.renderUser}
               />
             </div>
+          </div>
+          <div className="App-footer">
+          <button
+            onClick={this.handleBetaClick}
+          >Click Me!
+          </button>
           </div>
         </div>
       );

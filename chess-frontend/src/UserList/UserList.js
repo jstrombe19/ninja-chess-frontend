@@ -4,7 +4,7 @@ const UserList = ({ users, renderUser }) => {
   const userList = users.map(renderUser)
   return (
     <div>
-      {userList}  
+      {userList}
     </div>
   )
 }

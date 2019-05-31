@@ -26,6 +26,12 @@ export default class Game extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if(this.props.users !== prevProps.users) {
+      this.setState({ users: this.props.users});
+    }
+  }
+
   selectSquare = (index) => {
     const squares = this.state.squares.slice();
 
@@ -75,6 +81,7 @@ export default class Game extends React.Component {
               this.setState({
                 winner: player,
               })
+              this.sendGameStats();
             }
             console.log(squares[index].constructor.name)
 
@@ -138,6 +145,20 @@ export default class Game extends React.Component {
 
   check = () => {
     return false;
+  }
+
+  sendGameStats = () => {
+    const { winner, users } =  this.state;
+    console.log(winner);
+    console.log(users);
+    const stats = (winner === 1) ? {Winner: users[0].id, Loser: users[1].id} : {Winner: users[1].id, Loser: users[0].id};
+    fetch('http://localhost:3000/api/v1/games', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({stats: stats})
+    })
   }
 
   render() {

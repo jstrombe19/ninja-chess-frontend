@@ -1,6 +1,10 @@
 
 .App {
   color: white;
+  background-image: url(https://sitejerk.com/images/chess-piece-transparent-13.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
 
 .App-header {
@@ -16,8 +20,7 @@
 .body {
   display: flex;
   flex-direction: row;
-  height: 1000px;
-  background-image: url(https://sitejerk.com/images/chess-piece-transparent-13.png);
+  height: 750px;
 }
 
 .column-1 {

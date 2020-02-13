@@ -12,9 +12,9 @@ class App extends React.Component {
     this.state = {
       users: [],
       landingPage: false,
-      loginPage: false,
+      loginPage: true,
       isLoggedIn: false,
-      playGamePage: true,
+      playGamePage: false,
     }
   }
 
@@ -22,16 +22,27 @@ class App extends React.Component {
     console.log('stats were sent!');
   }
 
-  handleBetaClick() {
-    console.log('BUTTON WAS CLICKED!');
+  handlePlayClick = () => {
+    this.setState({
+      landingPage: false,
+      playGamePage: true,
+    })
   }
 
-  handleLoginClick() {
-    this.setState({isLoggedIn: true})
+  handleLoginClick = () => {
+    this.setState({
+      isLoggedIn: true,
+      landingPage: true,
+      loginPage: false,
+    })
   }
 
-  handleLogoutClick() {
-    this.setState({isLoggedIn: false})
+  handleLogoutClick = () => {
+    this.setState({
+      isLoggedIn: false,
+      loginPage: true,
+      playGamePage: false,
+    })
   }
 
   async componentDidMount() {
@@ -56,6 +67,8 @@ class App extends React.Component {
 
   render() {
     const { users, loginPage, playGamePage, landingPage, isLoggedIn } = this.state;
+    const user1 = users[0];
+    const user2 = users[1];
     let button;
 
     if(landingPage) {
@@ -63,11 +76,13 @@ class App extends React.Component {
         <div className="App">
           <div className="App-header">
             <img src={logo} alt='chess pieces'/>
-            <div className="Logo">
               <div className="App-login">
                 THIS IS WHERE USERS LAND!!!
               </div>
-            </div>
+            <button
+              onClick={this.handlePlayClick}
+            >Play a Game
+            </button>
           </div>
         </div>
       )
@@ -77,9 +92,13 @@ class App extends React.Component {
       return(
         <div className="App">
           <div className="App-header">
-            <div className="App-login">
+            <div className="body">
               THIS IS WHERE USERS LOGIN!!!
             </div>
+            <button
+              onClick={this.handleLoginClick}
+            >Login
+            </button>
           </div>
         </div>
       )
@@ -110,8 +129,8 @@ class App extends React.Component {
           </div>
           <div className="App-footer">
           <button
-            onClick={this.handleBetaClick}
-          >Click Me!
+            onClick={this.handleLogoutClick}
+          >Logout
           </button>
           </div>
         </div>

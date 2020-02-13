@@ -75,17 +75,9 @@ export default class Game extends React.Component {
               this.updateScore(squares[index]);
               blackCaptured.push(squares[index]);
             }
-            if(squares[index].constructor.name === 'King') {
-              alert('Congratulations! You won!')
-              const player = this.state.player;
-              this.setState({
-                winner: player,
-              })
-              this.sendGameStats();
-            }
-            console.log(squares[index].constructor.name)
-
+            this.checkForKing(squares[index]);
           }
+
           console.log("whiteCaptured", whiteCaptured );
           console.log("blackCaptured", blackCaptured );
           squares[index] = squares[this.state.selectedPiece];
@@ -111,6 +103,17 @@ export default class Game extends React.Component {
       }
     }
 
+  }
+
+  checkForKing = (capturedPiece) => {
+    if(capturedPiece.constructor.name === 'King') {
+      alert('Congratulations! You won!')
+      const player = this.state.player;
+      this.setState({ winner: player })
+    }
+    else {
+      return false;
+    }
   }
 
   isMoveLegal = (movePath) => {

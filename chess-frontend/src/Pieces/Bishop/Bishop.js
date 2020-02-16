@@ -16,9 +16,6 @@ export default class Bishop extends Piece {
 
   isValidMove = (origin, destination) => {
     const proposedMove = Math.abs(origin - destination);
-    console.log('origin', origin);
-    console.log('destination', destination);
-    console.log('proposedMove', proposedMove);
     let incrementor = 0;
     switch (proposedMove % 9) {
       case 0:

@@ -13,9 +13,9 @@ class App extends React.Component {
     this.state = {
       users: [],
       landingPage: false,
-      loginPage: true,
+      loginPage: false,
       isLoggedIn: false,
-      playGamePage: false
+      playGamePage: true
     };
   }
 
@@ -87,10 +87,9 @@ class App extends React.Component {
     if (loginPage) {
       return (
         <div className='App'>
-          <div className='App-header'>
-            <div className='body'>THIS IS WHERE USERS LOGIN!!!</div>
-            <button onClick={this.handleLoginClick}>Login</button>
-          </div>
+          <div className='App-header'></div>
+          <div className='body'>THIS IS WHERE USERS LOGIN!!!</div>
+          <button onClick={this.handleLoginClick}>Login</button>
         </div>
       );
     }

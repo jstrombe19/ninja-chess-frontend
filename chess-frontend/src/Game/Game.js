@@ -36,14 +36,12 @@ export default class Game extends React.Component {
     const squares = this.state.squares.slice();
 
     if (this.state.selectedPiece === -1) {
-      if (!squares[index] || squares[index].player !== this.state.player) {
+      if (squares[index] && squares[index].player !== this.state.player) {
+        console.log(squares[index]);
         this.setState({
           status: "Wrong player's piece. Choose " + this.state.turn + ' pieces.'
         });
-        return squares[index]
-          ? delete squares[index].style.backgroundColor
-          : null;
-      } else {
+      } else if (squares[index]) {
         squares[index].style = {
           ...squares[index].style,
           backgroundColor: 'RGB(111, 143, 114)'

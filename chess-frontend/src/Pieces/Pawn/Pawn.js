@@ -2,42 +2,55 @@ import Piece from '../Piece.js';
 
 export default class Pawn extends Piece {
   constructor(props) {
-    super(props, (props === 1 ?
-      "https://upload.wikimedia.org/wikipedia/commons/4/45/Chess_plt45.svg" :
-      "https://upload.wikimedia.org/wikipedia/commons/c/c7/Chess_pdt45.svg"));
+    super(
+      props,
+      props === 1
+        ? 'https://upload.wikimedia.org/wikipedia/commons/4/45/Chess_plt45.svg'
+        : 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Chess_pdt45.svg'
+    );
     this.state = {
       firstMove: true,
       captured: false,
-      value: 1,
+      value: 1
     };
   }
 
+  makeFirstMove = () => {
+    this.setState({ firstMove: false });
+  };
+
   isValidMove = (origin, destination) => {
     const { firstMove, player } = this.state;
-    const movementDirection = (player === 1 && origin > destination) || (player !== 1 && origin < destination);
+    const movementDirection =
+      player === 1 ? origin > destination : origin < destination;
+    console.log('origin', origin);
+    console.log('destination', destination);
+    console.log('movementDirection', movementDirection);
     const proposedMove = Math.abs(origin - destination);
     let incrementor = 0;
-    switch (proposedMove % 16 && movementDirection) {
-      case 0 && firstMove === true:
-        incrementor = 16;
+    switch (proposedMove) {
+      case 16:
+        firstMove === true ? (incrementor = 16) : (incrementor = 400);
+        this.makeFirstMove();
         return incrementor;
-      case 9  && proposedMove < 10:
+      case 9:
         incrementor = 9;
+        this.makeFirstMove();
         return incrementor;
-      case 8: //&& proposedMove < 10:
+      case 8:
         incrementor = 8;
+        this.makeFirstMove();
         return incrementor;
-      case 7 && proposedMove < 10:
+      case 7:
         incrementor = 7;
+        this.makeFirstMove();
         return incrementor;
       default:
-        alert("That is not a valid Pawn movement.");
+        alert('That is not a valid Pawn movement.');
         incrementor = 400;
         return incrementor;
     }
-  }
+  };
 
-  promotion = () => {
-
-  }
+  promotion = () => {};
 }

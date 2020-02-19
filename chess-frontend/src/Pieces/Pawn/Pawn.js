@@ -21,9 +21,9 @@ export default class Pawn extends Piece {
 
   isValidMove = (origin, destination) => {
     const { firstMove } = this.state;
-    const movementDirection = '';
-    console.log('props', this.props);
-    // player === 1 ? origin > destination : origin < destination;
+    const player = this.props;
+    const movementDirection =
+      player === 1 ? origin > destination : origin < destination;
     console.log('player');
     console.log('origin', origin);
     console.log('destination', destination);
@@ -33,7 +33,9 @@ export default class Pawn extends Piece {
     let incrementor = 0;
     switch (proposedMove) {
       case 16:
-        firstMove === true ? (incrementor = 16) : (incrementor = 400);
+        firstMove && movementDirection
+          ? (incrementor = 16)
+          : (incrementor = 400);
         this.makeFirstMove();
         return incrementor;
       case 9:

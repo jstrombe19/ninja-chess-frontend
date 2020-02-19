@@ -20,11 +20,14 @@ export default class Pawn extends Piece {
   };
 
   isValidMove = (origin, destination) => {
-    const { firstMove, player } = this.state;
-    const movementDirection =
-      player === 1 ? origin > destination : origin < destination;
+    const { firstMove } = this.state;
+    const movementDirection = '';
+    console.log('props', this.props);
+    // player === 1 ? origin > destination : origin < destination;
+    console.log('player');
     console.log('origin', origin);
     console.log('destination', destination);
+    console.log('movementDirection logic', origin > destination);
     console.log('movementDirection', movementDirection);
     const proposedMove = Math.abs(origin - destination);
     let incrementor = 0;
